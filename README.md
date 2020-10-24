@@ -41,6 +41,7 @@ Things you may want to cover:
 
 - has_many :user_items
 - has_many :purchases
+- has_many :item
 
 
 ### user_items テーブル
@@ -54,7 +55,6 @@ Things you may want to cover:
 
 - belongs_to :user
 - belongs_to :item
-- has_one :purchase
 
 
 ### items テーブル
@@ -91,4 +91,4 @@ Things you may want to cover:
 
 ### Association
 
-- has_one :user_item
+- belongs_to :user_item
