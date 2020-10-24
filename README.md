@@ -33,7 +33,9 @@ Things you may want to cover:
 | password     | string      | null: false |
 | first_name   | string      | null: false |
 | last_name    | string      | null: false |
-| berth_day    | date        | null: false |
+| first_name   | string      | null: false |
+| last_name    | string      | null: false |
+| birth_day    | date        | null: false |
 
 ### Association
 
@@ -44,54 +46,50 @@ Things you may want to cover:
 
 ### user_items テーブル
 
-| Column  | Type      | Options                        |
-|-------- |-----------|--------------------------------|
-| user    | reference | null: false, foreign_key: true |
-| item    | reference | null: false, foreign_key: true |
+| Column  | Type       | Options                        |
+|-------- |------------|--------------------------------|
+| user    | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :users
-- belongs_to :items
+- belongs_to :user
+- belongs_to :item
 
 
 ### items テーブル
 
-| Column      | Type      | Options                        |
-|-------------|-----------|--------------------------------|
-| item_name   | string    | null: false                    |
-| info        | text      | null: false                    |
-| category    | reference | null: false, foreign_key: true |
-| status      | reference | null: false, foreign_key: true |
-| cost        | reference | null: false, foreign_key: true |
-| area        | reference | null: false, foreign_key: true |
-| day         | reference | null: false, foreign_key: true |
-| prise       | integer   | null: false                    |
-| user        | reference | null: false, foreign_key: true |
+| Column      | Type       | Options                        |
+|-------------|------------|--------------------------------|
+| name        | string     | null: false                    |
+| info        | text       | null: false                    |
+| category_id | integer    | null: false                    | 
+| status_id   | integer    | null: false                    |
+| cost_id     | integer    | null: false                    |
+| area_id     | integer    | null: false                    |
+| day_id      | integer    | null: false                    |
+| prise       | integer    | null: false                    |
+| user        | references | null: false, foreign_key: true |
 
 ### Association
 
-- has_many :user_items
-- has_many :users, through: :user_items
+- belongs_to :user_items
+- belongs_to :user
 - has_one :purchases
 
 
 ### purchases テーブル
 
-| Column        | Type      | Options                        |
-|---------------|-----------|--------------------------------|
-| card_number   | integer   | null: false                    |
-| deadline      | integer   | null: false                    |
-| deadline      | integer   | null: false                    |
-| security_code | integer   | null: false                    |
-| postal        | string    | null: false                    |
-| pref          | reference | null: false, foreign_key: true |
-| city          | string    | null: false                    |
-| address       | string    | null: false                    |
-| building      | string    |                                |
-| phon          | integer   | null: false                    |
-| comment       | text      |                                |
-| user          | reference | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+|---------------|------------|--------------------------------|
+| postal        | string     | null: false                    |
+| pref_id       | integer    | null: false                    |
+| city          | string     | null: false                    |
+| address       | string     | null: false                    |
+| building      | string     |                                |
+| phon          | string     | null: false                    |
+| comment       | text       |                                |
+| user          | references | null: false, foreign_key: true |
 
 ### Association
 
