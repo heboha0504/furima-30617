@@ -41,7 +41,7 @@ Things you may want to cover:
 
 - has_many :user_items
 - has_many :purchases
-- has_many :item
+- has_many :items
 
 
 ### user_items テーブル
